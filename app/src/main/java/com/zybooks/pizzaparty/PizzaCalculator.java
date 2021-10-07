@@ -7,8 +7,7 @@ public class PizzaCalculator {
         LIGHT, MEDIUM, RAVENOUS
     }
 
-    public final static int SLICES_PER_PIZZA = 8;
-
+    public static int SLICES_PER_PIZZA = 0;
 
     private HungerLevel mHungerLevel;
     private int mPartySize;
@@ -48,6 +47,6 @@ public class PizzaCalculator {
         else {
             slicesPerPerson = 4;
         }
-        return (int) Math.ceil(mPartySize * slicesPerPerson / (double) SLICES_PER_PIZZA);
+        return (int) Math.ceil(mPartySize * slicesPerPerson / (double)SLICES_PER_PIZZA);
     }
 }
