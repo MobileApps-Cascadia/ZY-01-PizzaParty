@@ -9,11 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final static int SLICES_PER_PIZZA = 8;
+    public static int SLICES_PER_PIZZA = 8;
 
     private EditText mNumAttendEditText;
     private TextView mNumPizzasTextView;
     private RadioGroup mHowHungryRadioGroup;
+    public RadioGroup mSizeRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         mNumAttendEditText = findViewById(R.id.num_attend_edit_text);
         mNumPizzasTextView = findViewById(R.id.num_pizzas_text_view);
         mHowHungryRadioGroup = findViewById(R.id.hungry_radio_group);
+        mSizeRadioGroup = findViewById(R.id.size_radio_group);
     }
 
     public void calculateClick(View view) {

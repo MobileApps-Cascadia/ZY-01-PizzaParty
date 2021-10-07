@@ -2,11 +2,13 @@ package com.zybooks.pizzaparty;
 
 public class PizzaCalculator {
 
+
     public enum HungerLevel {
         LIGHT, MEDIUM, RAVENOUS
     }
 
     public final static int SLICES_PER_PIZZA = 8;
+
 
     private HungerLevel mHungerLevel;
     private int mPartySize;
@@ -14,6 +16,7 @@ public class PizzaCalculator {
     public PizzaCalculator(int partySize, HungerLevel level) {
         setHungerLevel(level);
         setPartySize(partySize);
+
     }
 
     public HungerLevel getHungerLevel() {
