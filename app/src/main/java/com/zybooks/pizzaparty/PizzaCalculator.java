@@ -6,14 +6,30 @@ public class PizzaCalculator {
         LIGHT, MEDIUM, RAVENOUS
     }
 
-    public final static int SLICES_PER_PIZZA = 8;
+    public enum PizzaSize {
+        SMALL, MEDIUM, LARGE
+    }
+
+    public final static int SMALL_SLICES_PER_PIZZA = 6;
+    public final static int MEDIUM_SLICES_PER_PIZZA = 8;
+    public final static int LARGE_SLICES_PER_PIZZA = 12;
 
     private HungerLevel mHungerLevel;
+    private PizzaSize mPizzaSize;
     private int mPartySize;
 
-    public PizzaCalculator(int partySize, HungerLevel level) {
+    public PizzaCalculator(int partySize, HungerLevel level, PizzaSize size) {
         setHungerLevel(level);
         setPartySize(partySize);
+        setPizzaSize(size);
+    }
+
+    public PizzaSize getPizzaSize() {
+        return mPizzaSize;
+    }
+
+    public void setPizzaSize(PizzaSize size) {
+        mPizzaSize = size;
     }
 
     public HungerLevel getHungerLevel() {
@@ -35,6 +51,7 @@ public class PizzaCalculator {
     }
 
     public int getTotalPizzas() {
+        //get total slices per person depending on hungry level
         int slicesPerPerson;
         if (mHungerLevel == HungerLevel.LIGHT) {
             slicesPerPerson = 2;
@@ -45,6 +62,18 @@ public class PizzaCalculator {
         else {
             slicesPerPerson = 4;
         }
-        return (int) Math.ceil(mPartySize * slicesPerPerson / (double) SLICES_PER_PIZZA);
+
+        //get total slices per pizza depending on size
+        int slicesPerPizza;
+        if(mPizzaSize == PizzaSize.LARGE){
+            slicesPerPizza = LARGE_SLICES_PER_PIZZA;
+        }
+        else if(mPizzaSize == PizzaSize.MEDIUM){
+            slicesPerPizza = MEDIUM_SLICES_PER_PIZZA;
+        }
+        else {
+            slicesPerPizza = SMALL_SLICES_PER_PIZZA;
+        }
+        return (int) Math.ceil(mPartySize * slicesPerPerson / (double) slicesPerPizza);
     }
 }
