@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mNumAttendEditText;
     private TextView mNumPizzasTextView;
     private RadioGroup mHowHungryRadioGroup;
+    private RadioGroup mPizzaSizeGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         mNumAttendEditText = findViewById(R.id.num_attend_edit_text);
         mNumPizzasTextView = findViewById(R.id.num_pizzas_text_view);
         mHowHungryRadioGroup = findViewById(R.id.hungry_radio_group);
+        mPizzaSizeGroup = findViewById(R.id.pizzasize_radio_group);
     }
 
     public void calculateClick(View view) {
@@ -47,9 +49,16 @@ public class MainActivity extends AppCompatActivity {
         else if (checkedId == R.id.medium_radio_button) {
             hungerLevel = PizzaCalculator.HungerLevel.MEDIUM;
         }
+        //Get Pizza Size
+        int checkedSizeId = mPizzaSizeGroup.getCheckedRadioButtonId();
+        PizzaCalculator.PizzaSize size = PizzaCalculator.PizzaSize.LARGE;
+        if (checkedSizeId == R.id.smallsize_radio_button)
+            size = PizzaCalculator.PizzaSize.SMALL;
+        else if (checkedSizeId == R.id.mediumsize_radio_button)
+            size = PizzaCalculator.PizzaSize.MEDIUM;
 
         // Get the number of pizzas needed
-        PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel);
+        PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel, size);
         int totalPizzas = calc.getTotalPizzas();
 
         // Place totalPizzas into the string resource and display

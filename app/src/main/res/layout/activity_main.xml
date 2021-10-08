@@ -58,6 +58,29 @@
             android:layout_height="wrap_content" />
     </RadioGroup>
 
+    <RadioGroup
+        android:id="@+id/pizzasize_radio_group"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/smallsize_radio_button"
+            android:text="Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/mediumsize_radio_button"
+            android:text="Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/largesize_radio_button"
+            android:text="Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
     <TextView
         android:id="@+id/num_pizzas_text_view"
         android:text="Total pizzas: ?"
