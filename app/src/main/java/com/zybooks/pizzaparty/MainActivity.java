@@ -9,12 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int SLICES_PER_PIZZA = 8;
 
     private EditText mNumAttendEditText;
     private TextView mNumPizzasTextView;
     private RadioGroup mHowHungryRadioGroup;
-    public RadioGroup mSizeRadioGroup;
+    private RadioGroup mPizzaSizeRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         mNumAttendEditText = findViewById(R.id.num_attend_edit_text);
         mNumPizzasTextView = findViewById(R.id.num_pizzas_text_view);
         mHowHungryRadioGroup = findViewById(R.id.hungry_radio_group);
-        mSizeRadioGroup = findViewById(R.id.size_radio_group);
+        mPizzaSizeRadioGroup = findViewById(R.id.PizzaSize_radio_group);
     }
 
     public void calculateClick(View view) {
@@ -35,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             String numAttendStr = mNumAttendEditText.getText().toString();
             numAttend = Integer.parseInt(numAttendStr);
-        }
-        catch (NumberFormatException ex) {
+        } catch (NumberFormatException ex) {
             numAttend = 0;
         }
 
@@ -45,25 +43,26 @@ public class MainActivity extends AppCompatActivity {
         PizzaCalculator.HungerLevel hungerLevel = PizzaCalculator.HungerLevel.RAVENOUS;
         if (checkedId == R.id.light_radio_button) {
             hungerLevel = PizzaCalculator.HungerLevel.LIGHT;
-        }
-        else if (checkedId == R.id.medium_radio_button) {
+        } else if (checkedId == R.id.medium_radio_button) {
             hungerLevel = PizzaCalculator.HungerLevel.MEDIUM;
         }
 
-        int checkedSize = mSizeRadioGroup.getCheckedRadioButtonId();
-        if(checkedSize == R.id.small_radio_button){
-            SLICES_PER_PIZZA = 6;
+
+
+        int checkPizzaSizeId = mPizzaSizeRadioGroup.getCheckedRadioButtonId();
+        PizzaCalculator.PizzaSize pizzaSize = PizzaCalculator.PizzaSize.LARGE;
+        if (checkPizzaSizeId == R.id.mediumSize_radio_button){
+            pizzaSize = PizzaCalculator.PizzaSize.MEDIUM;
         }
-        else if (checkedSize == R.id.medium_size_radio_button){
-            SLICES_PER_PIZZA = 8;
+        else if (checkPizzaSizeId == R.id.smallSize_radio_button){
+            pizzaSize = PizzaCalculator.PizzaSize.SMALL;
         }
-        else if (checkedSize == R.id.large_radio_button){
-            SLICES_PER_PIZZA = 12;
-        }
+
+
 
 
                 // Get the number of pizzas needed
-        PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel);
+        PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel, pizzaSize);
         int totalPizzas = calc.getTotalPizzas();
 
         // Place totalPizzas into the string resource and display

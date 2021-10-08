@@ -59,7 +59,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/size_pizzas_text_view"
+        android:id="@+id/textView"
         android:text="Pizza Size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,22 +67,23 @@
         android:textSize="24sp"/>
 
     <RadioGroup
-        android:id="@+id/size_radio_group"
+        android:id="@+id/PizzaSize_radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"/>
         <RadioButton
-            android:id="@+id/small_radio_button"
+            android:id="@+id/smallSize_radio_button"
             android:text="Small"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:checked="true"/>
         <RadioButton
-            android:id="@+id/medium_size_radio_button"
+            android:id="@+id/mediumSize_radio_button"
             android:text="Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
-            android:id="@+id/large_radio_button"
+            android:id="@+id/largeSize_radio_button"
             android:text="Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
