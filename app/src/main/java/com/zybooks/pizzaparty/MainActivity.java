@@ -9,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final static int SLICES_PER_PIZZA = 8;
+// slices per pizza is now varied
+public final static int SLICES_PER_PIZZA = 8;
 
     private EditText mNumAttendEditText;
     private TextView mNumPizzasTextView;
     private RadioGroup mHowHungryRadioGroup;
+    private RadioGroup mSizePizzaRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         mNumAttendEditText = findViewById(R.id.num_attend_edit_text);
         mNumPizzasTextView = findViewById(R.id.num_pizzas_text_view);
         mHowHungryRadioGroup = findViewById(R.id.hungry_radio_group);
+        mSizePizzaRadioGroup = findViewById(R.id.size_pizza_radio_group);
     }
 
     public void calculateClick(View view) {
@@ -48,8 +51,18 @@ public class MainActivity extends AppCompatActivity {
             hungerLevel = PizzaCalculator.HungerLevel.MEDIUM;
         }
 
+        // Get size of pizza selection
+        int checkedSizeId = mSizePizzaRadioGroup.getCheckedRadioButtonId();
+        PizzaCalculator.SizePizza sizePizza = PizzaCalculator.SizePizza.MEDIUM;
+        if (checkedSizeId == R.id.small_size_radio_button) {
+            sizePizza = PizzaCalculator.SizePizza.SMALL;
+        }
+        else if (checkedSizeId == R.id.large_size_radio_button) {
+            sizePizza = PizzaCalculator.SizePizza.LARGE;
+        }
+
         // Get the number of pizzas needed
-        PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel);
+        PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel, sizePizza);
         int totalPizzas = calc.getTotalPizzas();
 
         // Place totalPizzas into the string resource and display
