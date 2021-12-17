@@ -56,6 +56,41 @@
             android:text="Ravenous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
+//Add text header for the number of pizzas
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Pizza Size"
+        android:textSize="24sp"
+        android:labelFor="@id/size_pizza_radio_group" />
+
+//Add new Radio group for Pizza size selection
+    <RadioGroup
+        android:id="@+id/size_pizza_radio_group"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/small_size_radio_button"
+            android:text="Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/medium_size_radio_button"
+            android:text="Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+        <RadioButton
+            android:id="@+id/large_size_radio_button"
+            android:text="Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </RadioGroup>
 
     <TextView
