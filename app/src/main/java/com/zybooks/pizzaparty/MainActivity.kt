@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     fun calculateClick(view: View) {
         // Get the number of people from the UI (as an Int)
         val numAttendStr = numAttendEditText.text.toString()
-        val numAttend = numAttendStr.toInt() //TODO: When does this cause app to crash? Fix this
+        val numAttend = numAttendStr.toIntOrNull() ?: 0//TODO: When does this cause app to crash? Fix this
 
         // Calculate the number of pizzas needed (as an Int)
         val slicesPerPerson = 4 //TODO: Update this value to use the RadioGroup Input
