@@ -34,7 +34,12 @@ class MainActivity : AppCompatActivity() {
 
 
         // Calculate the number of pizzas needed (as an Int)
-        val slicesPerPerson = 4 //TODO: Update this value to use the RadioGroup Input
+         // Determine how many slices on average each person will eat
+        val slicesPerPerson = when (howHungryRadioGroup.checkedRadioButtonId) {
+            R.id.light_radio_button -> 2
+            R.id.medium_radio_button -> 3
+            else -> 4
+        } //TODO: Update this value to use the RadioGroup Input
         val totalPizzas = ceil(numAttend * slicesPerPerson / SLICES_PER_PIZZA.toDouble()).toInt()
 
         // Place totalPizzas into the string resource and display
